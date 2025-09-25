@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Disha’s Desktop</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/x-icon" href="assets/icons/icon.ico">
+</head>
+<body>
+  <nav id="navbar">
+    <ul>
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#music">Music</a></li>
+      <li id="hobby-icon" title="Show my hobbies">
+        💖 Tap 
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="window" id="hero">
+    <h1 id="headline"></h1>
+  </div>
+
+<!-- Floating Arcade Contact -->
+<div id="arcade-widget">
+  <p>INSERT COIN TO CONTACT ME!</p>
+  <img src="assets/images/arcade.png" alt="Arcade Machine">
+  <button id="insert-coin">INSERT COIN</button>
+</div>
+
+<!-- Hidden contact popup -->
+<div id="contact-popup" class="contact-popup">
+  <h3>READY PLAYER ONE?</h3>
+  <a href="mailto:disha748@gmail.com?subject=Hello%20Disha!&body=I%20wanted%20to%20reach%20out..." target="_blank">
+    📧 Email Me
+  </a>
+  <p style="font-size:12px; color:gray;">If this doesn’t open, copy my email: <b>dishatalaulikar@gmail.com</b></p>
+  <p><a href="https://github.com/disha748-design" target="_blank">💻 GitHub</a></p>
+  <p><a href="https://www.linkedin.com/in/disha748" target="_blank">🔗 LinkedIn</a></p>
+</div>
+
+
+ <!-- CMD Icon (top-right, above photo icon) -->
+<div id="cmd-icon">
+  <img src="assets/icons/cmd.png" alt="CMD Icon">
+  <p>About Me</p>
+</div>
+
+<!-- CMD Modal -->
+<div class="window-modal cmd-terminal" id="cmd-modal">
+  <div class="window-header cmd-terminal-header">
+    <span>CMD</span>
+    <button class="close-btn cmd-close" onclick="closeCMD()">X</button>
+  </div>
+  <div class="window-body cmd-terminal-body" id="cmd-body">
+    <div class="cmd-line">Welcome to the Disha's Portfolio!\n Type Help to start.<span class="cursor"></span></div>
+  </div>
+  <div class="cmd-input-line">
+    <span class="prompt">C:\></span>
+    <input type="text" id="cmd-input" autocomplete="off" />
+  </div>
+</div>
+
+
+  <!-- Education Section -->
+  <div class="window" id="education">
+    <h2>EDUCATION</h2>
+    <ul>
+      <li>B.E (Electronics & CS, minor AI/ML) - Don Bosco College (2022-2026*), CGPA: 8.93</li>
+      <li>HSSC - Shree Damodar Higher Secondary School, 63%</li>
+      <li>SSC - Maria Bambina Convent High School, 89.5%</li>
+    </ul>
+  </div>
+
+  <!-- Skills Section -->
+  <div class="window" id="skills">
+    <h2>SKILLS</h2>
+    <div class="skill"><div class="skill-name">Python / AI & ML</div><div class="skill-bar"><div class="skill-bar-fill" data-width="90%"></div></div></div>
+    <div class="skill"><div class="skill-name">Web Development (React / ASP.NET Core)</div><div class="skill-bar"><div class="skill-bar-fill" data-width="85%"></div></div></div>
+    <div class="skill"><div class="skill-name">Data Analysis / Visualization</div><div class="skill-bar"><div class="skill-bar-fill" data-width="80%"></div></div></div>
+  </div>
+
+  <!-- Projects Section -->
+<div class="window" id="projects">
+  <h2>PROJECTS</h2>
+  <div class="projects-grid">
+    
+    <div class="project">
+      <h3><a href="https://github.com/disha748-design/interest-explorer" target="_blank">Interest Explorer</a></h3>
+      <p>Personalized hobby recommendations with fuzzy logic and evolutionary algorithms.</p>
+    </div>
+
+    <div class="project">
+      <h3><a href="https://github.com/disha748-design/medtracker" target="_blank">MedTracker</a></h3>
+      <p>Personal medicine tracker with automated reminders and secure data storage.</p>
+    </div>
+
+    <div class="project">
+      <h3><a href="https://github.com/disha748-design/bookish" target="_blank">Bookish</a></h3>
+      <p>Java app for cataloging and tracking books offline.</p>
+    </div>
+
+    <div class="project">
+      <h3><a href="https://github.com/disha748-design/Todo" target="_blank">My Planner</a></h3>
+  <p>A productivity planner site to make to-do lists, have pomodoro sessions, journal your feelings, and fill your mood and gratitude.</p>
+    </div>
+
+    <div class="project">
+      <h3><a href="https://github.com/disha748-design/rakhi-for-bro" target="_blank">Rakhi Website</a></h3>
+      <p>WebAR-based Raksha Bandhan website where users can have a virtual rakhi on their wrists using their camera.</p>
+    </div>
+
+  </div>
+</div>
+
+
+  <!-- Internship Section -->
+  <div class="window" id="internship">
+    <h2>INTERNSHIP</h2>
+    <p>Persistent Systems, Verna, Goa | Jul 2025 – Sept 2025</p><br>
+    <p>Software Developer Intern: Developed full-stack AI blogging platform using ASP.NET Core, React, SQL Server. Improved usability and end-to-end software practices.</p>
+  </div>
+
+  <!-- Activities & Certifications -->
+  <div class="window" id="activities">
+    <h2>ACTIVITIES & CERTIFICATIONS</h2>
+    <ul>
+      <li>Secretary, CII-IWN DBCE Chapter – 2024-25</li>
+      <li>Treasurer, Dbeats – 2024-25</li>
+      <li>Hackathons: Smart India Hackathon, IEEEXtreme, Inspirathon, Converge 2.0</li>
+      <li>Volunteering: Content Writer & Social Media Designer, HercsFuture</li>
+      <li>Certifications: Web Bootcamp (Udemy), Figma UI/UX, Diploma in Computer Applications</li>
+    </ul>
+  </div>
+
+ <!-- Photo App Icon -->
+<div id="photo-app-icon" class="desktop-icon">
+  <img src="assets/icons/photo-app.png" alt="Photos" />
+  <p>Photos</p>
+</div>
+
+<!-- Photo Window Modal -->
+<div id="photo-window" class="window-modal">
+  <div class="window-header">
+    <span>📸 My Photos</span>
+    <button id="close-photo-window" class="close-btn">✖</button>
+  </div>
+  <div class="window-body">
+    <div class="gallery">
+      <img src="assets/images/photo1.jpg" alt="Photo1">
+      <img src="assets/images/photo2.jpg" alt="Photo2">
+      <img src="assets/images/photo3.jpg" alt="Photo3">
+      <img src="assets/images/photo4.jpg" alt="Photo4">
+      <img src="assets/images/photo5.jpg" alt="Photo5">
+      <img src="assets/images/photo6.jpg" alt="Photo6">
+    </div>
+  </div>
+</div>
+
+
+  <!-- Hobby Section -->
+<div id="hobbies" class="window">
+  <h2>HOBBY ARENA</h2>
+  <div id="game-area">
+    <div id="avatar">
+  <div class="arm-left"></div>
+  <div class="arm-right"></div>
+  <div class="leg-left"></div>
+  <div class="leg-right"></div>
+</div>
+    <!-- Hobby items -->
+    <div class="hobby-item" data-name="Writing" style="top: 20px; left: 50px;">📝</div>
+    <div class="hobby-item" data-name="Ukulele" style="top: 100px; left: 200px;">🎸</div>
+    <div class="hobby-item" data-name="Colouring" style="top: 50px; left: 400px;">🎨</div>
+    <div class="hobby-item" data-name="Reading Books" style="top: 150px; left: 50px;">📚</div>
+    <div class="hobby-item" data-name="YT Video Essays" style="top: 200px; left: 250px;">📹</div>
+    <div class="hobby-item" data-name="Substack Articles" style="top: 80px; left: 600px;">📰</div>
+    <div class="hobby-item" data-name="Crochet" style="top: 200px; left: 500px;">🧶</div>
+    <div class="hobby-item" data-name="Dancing" style="top: 250px; left: 100px;">💃</div>
+    <div class="hobby-item" data-name="Singing" style="top: 50px; left: 700px;">🎤</div>
+    <div class="hobby-item" data-name="Journalling" style="top: 150px; left: 400px;">📔</div>
+    <div class="hobby-item" data-name="K-Dramas" style="top: 220px; left: 650px;">📺</div>
+    <div class="hobby-item" data-name="Cooking" style="top: 280px; left: 350px;">🍳</div>
+  </div>
+
+  <!-- Hobby detail window -->
+  <div id="hobby-window" style="display:none;">
+    <h4 id="hobby-title"></h4>
+    <p id="hobby-desc"></p>
+    <button onclick="closeHobbyWindow()">Close</button>
+  </div>
+</div>
+
+<!-- Vinyl Music Button with Bubble -->
+<div id="vinyl-btn">
+  <img src="assets/icons/vinyl.png" alt="Music" />
+  <span id="vinyl-bubble">Play some groovy tunes</span>
+</div>
+
+
+<!-- Floating Music Player -->
+<div id="floating-music-player">
+  <h4>Music Player</h4>
+  <ul id="music-player-list">
+    <li>
+      <span class="song-name">Retro Tune 1</span>
+      <button class="play-btn" data-src="assets/music/song1.mp3">Play</button>
+      <button class="pause-btn">Pause</button>
+      <div class="progress-container"><div class="progress-bar"></div></div>
+    </li>
+    <li>
+      <span class="song-name">Retro Tune 2</span>
+      <button class="play-btn" data-src="assets/music/song2.mp3">Play</button>
+      <button class="pause-btn">Pause</button>
+      <div class="progress-container"><div class="progress-bar"></div></div>
+    </li>
+     <li>
+      <span class="song-name">Retro Tune 3</span>
+      <button class="play-btn" data-src="assets/music/song3.mp3">Play</button>
+      <button class="pause-btn">Pause</button>
+      <div class="progress-container"><div class="progress-bar"></div></div>
+    </li>
+    <!-- Add more songs here -->
+  </ul>
+</div>
+
+
+  <!-- Footer -->
+  <div class="footer">
+    © 2025 Disha S Talaulikar - hope you had fun!
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

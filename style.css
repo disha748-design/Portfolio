@@ -1,0 +1,600 @@
+/* Reset & Body */
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background-color: #61A4DB;
+  font-family: 'Press Start 2P', monospace;
+  color: #00FF00;
+  line-height:1.5;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:20px;
+}
+/* Falling house animation */
+@keyframes fall {
+  0% { top: -50px; transform: rotate(0deg); opacity: 1; }
+  100% { top: 300px; transform: rotate(360deg); opacity: 0; }
+}
+
+.falling-house {
+  position: fixed;
+  left: 50px; /* will adjust in JS for random X */
+  top: -50px;
+  font-size: 2rem; /* bigger for fun */
+  z-index: 2000;
+  pointer-events: none;
+  animation: fall 1.5s forwards;
+}
+
+/* Headline */
+.headline-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  word-wrap: break-word;
+}
+#headline {
+  overflow-x: hidden;
+  white-space: nowrap;
+  color: #FF00FF;
+  text-shadow: 1px 1px 0 #00FFFF;
+}
+.cursor {
+  display:inline-block;
+  width:10px;
+  background-color:#00FFFF;
+  margin-left:2px;
+  animation: blink 1s infinite;
+}
+@keyframes blink {0%,50%,100%{opacity:1;}25%,75%{opacity:0;}}
+
+@media screen and (max-width: 768px) {
+  #headline { font-size: 0.8rem; }
+}
+
+/* Navbar */
+#navbar {
+  width: 100%;
+  background-color: #000080;
+  padding: 5px 0;
+  box-shadow: 2px 2px 0px #000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+#navbar ul {
+  list-style: none;
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 10px;
+}
+#navbar ul li {
+  margin-right: 20px;
+  cursor: pointer;
+  padding: 2px 5px;
+  border: 2px solid #C0C0C0;
+  background-color: #F0F0F0;
+  color: #000080;
+  transition: all 0.2s;
+}
+#navbar ul li:hover {
+  background-color: #FFA500;
+  color: #fff;
+  border-color: #FF0000;
+}
+
+/* Window Panels */
+.window {
+  border: 3px solid #000;
+  padding:20px;
+  width:90%;
+  max-width:900px;
+  margin:20px 0;
+  box-shadow: 4px 4px 0px #404040;
+  opacity:0;
+  transform: translateY(20px);
+  transition: all 0.5s ease-in-out;
+}
+.window.visible { opacity:1; transform: translateY(0); }
+
+/* Section Colors */
+#hero { background-color: #C0C0C0; color: #000080; }
+#projects { background-color: #F0E68C; color: #000; }
+#skills { background-color: #FFD700; color: #000080; }
+#contact { background-color: #98FB98; color: #006400; }
+#music { background-color: #FFB6C1; color: #800000; }
+.gallery { background-color: #E0FFFF; }
+
+
+/* Projects Grid */
+.projects-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+.project {
+  border: 2px solid #000080;
+  padding:10px;
+  background-color:#E8E8E8;
+  box-shadow:3px 3px 0px #800080;
+  transition: all 0.2s;
+}
+.project:hover h3 { color:#9900CC; text-shadow:0 0 5px #9900CC; }
+.project img { width:100%; margin-bottom:10px; border:1px solid #000; }
+.project h3 a {
+  color: #000080;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.project h3 a:hover {
+  text-decoration: underline;
+  color: #FF00FF;
+}
+
+/* Skills Bars */
+.skill { margin:10px 0; }
+.skill-name { margin-bottom:5px; }
+.skill-bar { height:20px; background-color:#000; border:2px solid #000; position:relative; }
+.skill-bar-fill { height:100%; background-color:#FF4500; width:0; transition: width 1s; }
+
+/* Contact Links */
+#contact a { display:block; margin:5px 0; color:#00FF00; text-decoration:none; transition:all 0.2s; }
+#contact a:hover { text-shadow:0 0 5px #00FF00; }
+
+/* Footer */
+.footer { margin:30px 0; font-size:0.7rem; color:#9900CC; }
+
+/* Photo App Icon - below CMD */
+#photo-app-icon {
+  position: fixed;
+  top: 150px; /* lower than CMD icon */
+  right: 20px;
+  text-align: center;
+  cursor: pointer;
+  z-index: 1000;
+}
+#photo-app-icon img {
+  width: 80px;  /* bigger icon */
+  height: 80px; /* bigger icon */
+  transition: transform 0.2s;
+}
+#photo-app-icon img:hover { transform: scale(1.1); }
+#photo-app-icon p {
+  font-size: 14px;
+  font-family: 'Press Start 2P', monospace;
+}
+.gallery {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+  gap:10px;
+}
+.gallery img {
+  width:100%;
+  border:2px solid #000;
+  box-shadow:2px 2px 0 #000;
+  transition: all 0.2s;
+  cursor:pointer;
+}
+.gallery img:hover { transform:scale(1.05); box-shadow:2px 2px 5px #9900CC; }
+
+/* Vinyl button */
+#vinyl-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 80px;   /* bigger */
+  height: 80px;  /* bigger */
+  cursor: pointer;
+  z-index: 1000;
+  animation: float 2s infinite ease-in-out;
+}
+#vinyl-btn img {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s;
+}
+#vinyl-btn img:hover { transform: rotate(20deg); }
+
+/* Floating bubble */
+#vinyl-bubble {
+  position: absolute;
+  bottom: 90px;
+  right: 0;
+  background: #FFFFE0;
+  border: 2px solid #000;
+  padding: 5px 10px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.7rem;
+  color: #333333; /* changed from #000080 to subtle dark gray */
+  border-radius: 8px;
+  white-space: nowrap;
+  box-shadow: 3px 3px 0 #404040;
+  animation: bubble-float 2s infinite alternate;
+}
+
+
+/* Float animations */
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes bubble-float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+  100% { transform: translateY(0); }
+}
+
+/* Floating Music Player */
+#floating-music-player {
+  position: fixed;
+  bottom: 110px;
+  right: 20px;
+  width: 260px;
+  background-color: #FFB6C1;
+  border: 3px solid #000;
+  box-shadow: 4px 4px 0 #404040;
+  padding: 30px;
+  display: none;
+  z-index: 999;
+}
+#floating-music-player h4 {
+  font-size: 0.7rem;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+/* Song list */
+#music-player-list li {
+  margin-bottom: 10px;
+  text-decoration-color: #000;
+}
+.play-btn, .pause-btn {
+  padding:2px 6px;
+  margin-right:3px;
+  font-size:0.7rem;
+  border:2px solid #000;
+  background:#F0F0F0;
+  cursor:pointer;
+  font-family:'Press Start 2P', monospace;
+}
+.play-btn:hover, .pause-btn:hover {
+  background:#FFA500;
+  color:#fff;
+  border-color:#FF0000;
+}
+.progress-container {
+  width:100%;
+  height:6px;
+  background:#000;
+  margin-top:3px;
+  position:relative;
+}
+.progress-bar {
+  height:100%;
+  width:0%;
+  background:#008000;
+  transition:width 0.1s linear;
+}
+#game-area {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  border: 3px solid #000;
+  background-color: #E7D283;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+#avatar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 50px;
+  cursor: pointer;
+}
+
+/* Head */
+#avatar::before {
+  content: '';
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid #000080;
+  margin: 0 auto;
+}
+
+/* Body */
+#avatar::after {
+  content: '';
+  display: block;
+  width: 2px;
+  height: 20px;
+  background-color: #000080;
+  margin: 0 auto;
+  position: relative;
+  top: -2px;
+}
+
+/* Arms */
+#avatar .arm-left,
+#avatar .arm-right {
+  position: absolute;
+  width: 10px;
+  height: 2px;
+  background-color: #000080;
+  top: 15px;
+}
+#avatar .arm-left { left: -10px; transform-origin: right; }
+#avatar .arm-right { left: 12px; transform-origin: left; }
+
+/* Legs */
+#avatar .leg-left,
+#avatar .leg-right {
+  position: absolute;
+  width: 2px;
+  height: 15px;
+  background-color: #000080;
+  top: 20px;
+  transform-origin: top;
+}
+
+/* Walking Animation */
+.walking .arm-left { animation: arm-left-walk 0.5s infinite alternate; }
+.walking .arm-right { animation: arm-right-walk 0.5s infinite alternate; }
+.walking .leg-left { animation: leg-left-walk 0.5s infinite alternate; }
+.walking .leg-right { animation: leg-right-walk 0.5s infinite alternate; }
+
+@keyframes arm-left-walk { 0% { transform: rotate(0deg); } 100% { transform: rotate(-30deg); } }
+@keyframes arm-right-walk { 0% { transform: rotate(0deg); } 100% { transform: rotate(30deg); } }
+@keyframes leg-left-walk { 0% { transform: rotate(0deg); } 100% { transform: rotate(30deg); } }
+@keyframes leg-right-walk { 0% { transform: rotate(0deg); } 100% { transform: rotate(-30deg); } }
+
+
+.hobby-item {
+  position: absolute;
+  font-size: 1.5rem;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.2s;
+}
+.hobby-item:hover { transform: scale(1.2); }
+
+#hobby-window {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  width: 250px;
+  padding: 10px;
+  background: #F0F0F0;
+  border: 3px solid #000;
+  box-shadow: 4px 4px 0 #404040;
+  z-index: 100;
+}
+#hobby-window h4 { margin-bottom: 5px; color:#000080; }
+#hobby-window button {
+  cursor:pointer;
+  font-family:'Press Start 2P', monospace;
+  border:2px solid #000;
+  background:#F0F0F0;
+  padding:5px;
+}
+/* Floating Arcade Widget */
+#arcade-widget {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  width: 120px;
+  text-align: center;
+}
+#arcade-widget img {
+  width: 100%;
+}
+#insert-coin {
+  margin-top: 5px;
+  background: yellow;
+  border: 2px solid black;
+  font-family: 'Press Start 2P', monospace;
+  cursor: pointer;
+}
+
+#insert-coin:hover {
+  background-color: #FFD700;
+  color: #000;
+}
+
+/* Window Modal */
+.window-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  max-width: 90%;
+  background-color: #F0F0F0;
+  border: 3px solid #000;
+  box-shadow: 5px 5px 0 #404040;
+  display: none;
+  z-index: 2000;
+  font-family: 'Press Start 2P', monospace;
+}
+
+/* Window Header */
+.window-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #000080;
+  color: #fff;
+  padding: 5px 10px;
+  border-bottom: 2px solid #000;
+}
+
+.close-btn {
+  background: #FF0000;
+  border: 2px solid #000;
+  color: #fff;
+  cursor: pointer;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.7rem;
+  width: 25px;
+  height: 25px;
+}
+
+.close-btn:hover { background: #FFA500; color: #000; }
+
+/* Window Body */
+.window-body {
+  padding: 15px;
+}
+
+.window-body .gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+}
+
+.window-body .gallery img {
+  width: 100%;
+  border: 2px solid #000;
+  box-shadow: 2px 2px 0 #000;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.window-body .gallery img:hover { transform: scale(1.05); }
+
+/* Contact Popup */
+.contact-popup {
+  position: fixed;
+  left: 160px; /* offset so it appears next to arcade */
+  bottom: 100px;
+  display: none;
+  background: #000080;
+  color: #00FF00;
+  padding: 20px;
+  border: 3px solid #FFD700;
+  font-family: 'Press Start 2P', monospace;
+  box-shadow: 4px 4px 0 #404040;
+  text-align: center;
+  z-index: 998;
+  animation: slideIn 0.3s ease-out;
+}
+
+.contact-popup a {
+  color: #FFD700;
+  text-decoration: none;
+  display: block;
+  margin: 10px 0;
+}
+
+.contact-popup a:hover {
+  text-decoration: underline;
+  color: #FF00FF;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-30px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+/* CMD Icon - on top */
+#cmd-icon {
+  position: fixed;
+  top: 70px; /* closer to top */
+  right: 20px;
+  text-align: center;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+#cmd-icon img { width: 60px; height: 60px; }
+#cmd-icon p { font-size: 12px; margin-top: 5px; font-family: "Press Start 2P", monospace; }
+/* CMD Terminal Modal */
+.window-modal.cmd-terminal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  max-width: 90%;
+  height: 400px;
+  background-color: #000;       /* classic black terminal */
+  border: 3px solid #00FF00;   /* neon green border */
+  box-shadow: 5px 5px 0 #404040;
+  display: none;
+  z-index: 2000;
+  font-family: 'Press Start 2P', monospace;
+  color: #00FF00;              /* green text */
+  overflow: hidden;
+}
+
+/* CMD Terminal Modal */
+.window-modal.cmd-terminal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  max-width: 90%;
+  height: 400px;            /* keeps overall modal size */
+  background-color: #000;
+  border: 3px solid #00FF00;
+  box-shadow: 5px 5px 0 #404040;
+  display: none;
+  z-index: 2000;
+  font-family: 'Press Start 2P', monospace;
+  color: #00FF00;
+  overflow: hidden;         /* keep header visible */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Terminal Body Scroll */
+.window-body.cmd-terminal-body {
+  padding: 10px;
+  height: 100%;              /* fill remaining space */
+  overflow-y: auto;          /* enable vertical scroll */
+  white-space: pre-wrap;
+  font-size: 0.8rem;
+  flex: 1;                   /* stretch to fill modal */
+}
+
+
+/* Close Button */
+.close-btn.cmd-close {
+  background: #FF0000;
+  border: 2px solid #000;
+  color: #fff;
+  cursor: pointer;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.7rem;
+  width: 25px;
+  height: 25px;
+}
+.close-btn.cmd-close:hover { background: #FFA500; color: #000; }
+/* Input Line */
+.cmd-input-line {
+  display: flex;
+  align-items: center;
+}
+.cmd-input-line span.prompt {
+  margin-right: 5px;
+}
+.cmd-input-line input {
+  background: transparent;
+  border: none;
+  color: #00FF00;
+  outline: none;
+  flex: 1;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.8rem;
+}
+
+@keyframes blink {
+  0%,50%,100%{opacity:1;}
+  25%,75%{opacity:0;}
+}
