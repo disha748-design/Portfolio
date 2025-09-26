@@ -8,7 +8,7 @@ body {
   display:flex;
   flex-direction:column;
   align-items:center;
-  padding:20px;
+  padding:50px;
 }
 /* Falling house animation */
 @keyframes fall {
@@ -145,10 +145,84 @@ body {
 /* Footer */
 .footer { margin:30px 0; font-size:0.7rem; color:#9900CC; }
 
+.desktop-icon {
+  position: fixed;
+  top: 250px; /* closer to top */
+  right: 20px;
+  text-align: center;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.desktop-icon img {
+  width: 60px;
+  height: 60px;
+  display: block;
+  margin: 0 auto 5px auto;
+}
+
+.window-modal {
+  display: none;
+  position: fixed;
+  top: 80px; /* slightly higher on screen */
+  left: 80px;
+  width: 600px; /* bigger width */
+  max-width: 90%; /* responsive for smaller screens */
+  background-color: #1a1a1a;
+  font-family: 'Courier New', Courier, monospace; /* font */
+  font-size: 18px; /* bigger font */
+  line-height: 1.6; /* spacing between lines */
+  border: 2px solid #5E936C;
+  color: #1a1a1a; /* visible text color */
+  z-index: 1000;
+  padding: 15px; /* space inside modal */
+  border-radius: 8px; /* smooth corners */
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+.window-modal img {
+  max-width: 100%;     /* image won’t exceed modal width */
+  height: auto;        /* maintain aspect ratio */
+  display: block;      /* remove inline gaps */
+  margin: 10px 0;      /* space above and below image */
+  border-radius: 5px;  /* optional: rounded corners */
+  box-shadow: 0 0 8px rgba(0,0,0,0.3); /* optional: subtle shadow */
+}
+
+.window-body {
+  padding: 10px 0;
+}
+
+.edu-box {
+  background-color: #5E936C;
+  color: #000;
+  padding: 12px 15px; /* more space inside each box */
+  border-radius: 5px;
+  margin-bottom: 10px; /* space between boxes */
+  cursor: default;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.window-header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #3E5F44;
+  padding: 5px 10px;
+  font-weight: bold;
+}
+.window-modal img {
+  max-width: 30%;     /* image won’t exceed modal width */
+  height: auto;        /* maintain aspect ratio */
+  display:flex;      /* remove inline gaps */
+  margin: 5px 0;      /* space above and below image */
+  border-radius: 5px;  /* optional: rounded corners */
+  box-shadow: 0 0 8px rgba(0,0,0,0.3); /* optional: subtle shadow */
+}
+
 /* Photo App Icon - below CMD */
 #photo-app-icon {
   position: fixed;
-  top: 150px; /* lower than CMD icon */
+  top: 350px; /* lower than CMD icon */
   right: 20px;
   text-align: center;
   cursor: pointer;
@@ -510,6 +584,11 @@ body {
   cursor: pointer;
   z-index: 1000;
 }
+/* Hide CMD modal initially */
+#cmd-modal {
+  display: none; /* stays hidden until clicked */
+}
+
 
 #cmd-icon img { width: 60px; height: 60px; }
 #cmd-icon p { font-size: 12px; margin-top: 5px; font-family: "Press Start 2P", monospace; }
@@ -552,34 +631,103 @@ body {
   display: flex;
   flex-direction: column;
 }
-
-/* Terminal Body Scroll */
-.window-body.cmd-terminal-body {
-  padding: 10px;
-  height: 100%;              /* fill remaining space */
-  overflow-y: auto;          /* enable vertical scroll */
-  white-space: pre-wrap;
-  font-size: 0.8rem;
-  flex: 1;                   /* stretch to fill modal */
+/* Internship App Icon */
+#internship-app-icon {
+  position: fixed;
+  top: 150px; /* lower than CMD icon */
+  right: 20px;
+  text-align: center;
+  cursor: pointer;
+  z-index: 1000;
+}
+#internship-app-icon img {
+  width: 70px;
+  height: 70px;
+  transition: transform 0.2s;
+}
+#internship-app-icon img:hover {
+  transform: scale(1.1);
+}
+#internship-app-icon p {
+  font-size: 14px;
+  font-family: 'Press Start 2P', monospace;
+  margin-top: 4px;
 }
 
+/* CMD Terminal Modal */
+.window-modal.cmd-terminal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  max-width: 90%;
+  height: 400px;
+  background-color: #000;          /* classic black */
+  border: 3px solid #00FF00;      /* neon green border */
+  box-shadow: 5px 5px 0 #404040;
+  display: none;                   /* hidden initially */
+  z-index: 2000;
+  font-family: 'Press Start 2P', monospace;
+  color: #00FF00;                 /* green text */
+  flex-direction: column;
+  overflow: hidden;
+  display: flex;
+}
+
+/* CMD Header */
+.window-header.cmd-terminal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #000080;
+  color: #fff;
+  padding: 5px 10px;
+  border-bottom: 2px solid #000;
+  position: relative;
+}
 
 /* Close Button */
 .close-btn.cmd-close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  z-index: 2100;
   background: #FF0000;
   border: 2px solid #000;
   color: #fff;
+  width: 25px;
+  height: 25px;
   cursor: pointer;
   font-family: 'Press Start 2P', monospace;
   font-size: 0.7rem;
-  width: 25px;
-  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.close-btn.cmd-close:hover { background: #FFA500; color: #000; }
+.close-btn.cmd-close:hover {
+  background: #FFA500;
+  color: #000;
+}
+
+/* Terminal Body */
+.window-body.cmd-terminal-body {
+  padding: 10px;
+  height: 100%;
+  flex: 1;                     /* fill remaining modal space */
+  overflow-y: auto;            /* vertical scroll */
+  white-space: pre-wrap;       /* maintain line breaks */
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
 /* Input Line */
 .cmd-input-line {
   display: flex;
   align-items: center;
+  border-top: 2px solid #00FF00;
+  padding: 5px 10px;
+  background-color: #000;
 }
 .cmd-input-line span.prompt {
   margin-right: 5px;
@@ -594,7 +742,16 @@ body {
   font-size: 0.8rem;
 }
 
-@keyframes blink {
-  0%,50%,100%{opacity:1;}
-  25%,75%{opacity:0;}
+/* Blinking Cursor */
+.cursor {
+  display: inline-block;
+  width: 10px;
+  background-color: #00FF00;
+  margin-left: 2px;
+  animation: blink 1s infinite;
 }
+@keyframes blink {
+  0%,50%,100% { opacity: 1; }
+  25%,75% { opacity: 0; }
+}
+

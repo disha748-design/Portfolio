@@ -11,11 +11,8 @@
   <nav id="navbar">
     <ul>
       <li><a href="#hero">Home</a></li>
-      <li><a href="#about">About</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#skills">Skills</a></li>
-      <li><a href="#gallery">Gallery</a></li>
-      <li><a href="#music">Music</a></li>
       <li id="hobby-icon" title="Show my hobbies">
         💖 Tap 
       </li>
@@ -49,17 +46,17 @@
  <!-- CMD Icon (top-right, above photo icon) -->
 <div id="cmd-icon">
   <img src="assets/icons/cmd.png" alt="CMD Icon">
-  <p>About Me</p>
+  <p>About</p>
 </div>
 
 <!-- CMD Modal -->
 <div class="window-modal cmd-terminal" id="cmd-modal">
   <div class="window-header cmd-terminal-header">
     <span>CMD</span>
-    <button class="close-btn cmd-close" onclick="closeCMD()">X</button>
+<button class="close-btn cmd-close">X</button>
   </div>
   <div class="window-body cmd-terminal-body" id="cmd-body">
-    <div class="cmd-line">Welcome to the Disha's Portfolio!\n Type Help to start.<span class="cursor"></span></div>
+    <div class="cmd-line">Welcome to the Disha's Portfolio! Type Help to start.<span class="cursor"></span></div>
   </div>
   <div class="cmd-input-line">
     <span class="prompt">C:\></span>
@@ -68,15 +65,43 @@
 </div>
 
 
-  <!-- Education Section -->
-  <div class="window" id="education">
-    <h2>EDUCATION</h2>
-    <ul>
-      <li>B.E (Electronics & CS, minor AI/ML) - Don Bosco College (2022-2026*), CGPA: 8.93</li>
-      <li>HSSC - Shree Damodar Higher Secondary School, 63%</li>
-      <li>SSC - Maria Bambina Convent High School, 89.5%</li>
-    </ul>
+<!-- Internet Explorer Icon -->
+<div id="ie-icon" class="desktop-icon">
+  <img src="assets/icons/internet-explorer.png" alt="Internet Explorer" />
+  <p>Edu</p>
+</div>
+
+<!-- Education Modal -->
+<div id="education-modal" class="window-modal">
+  <div class="window-header">
+    <span>Educational Qualifications</span>
+    <button class="close-btn" id="close-education">X</button>
   </div>
+  <div class="window-body" id="education-body">
+    <!-- Search bar -->
+    <input type="text" id="edu-search" placeholder="Search..." style="width: 100%; margin-bottom: 10px; padding: 5px;" />
+
+    <!-- Education boxes -->
+    <div id="edu-boxes" style="display: flex; flex-direction: column; gap: 10px;">
+      <div class="edu-box">
+        <strong>B.E (Electronics and Computer Science, Minor in AI & ML)</strong><br>
+        Don Bosco College of Engineering (Ongoing - VIIth Sem, 2022-2026)
+      </div>
+      <div class="edu-box">
+        <strong>HSSC</strong><br>
+        Shree Damodar Higher Secondary School of Science (2020-2022)
+      </div>
+      <div class="edu-box">
+        <strong>SSC</strong><br>
+        Maria Bambina Convent High School (2014-2020)
+      </div>
+      <div class="edu-box">
+        <strong>Elementary</strong><br>
+        Our Own English Primary Nursery & Kindergarten School
+      </div>
+    </div>
+  </div>
+</div>
 
   <!-- Skills Section -->
   <div class="window" id="skills">
@@ -120,24 +145,35 @@
 </div>
 
 
-  <!-- Internship Section -->
-  <div class="window" id="internship">
-    <h2>INTERNSHIP</h2>
-    <p>Persistent Systems, Verna, Goa | Jul 2025 – Sept 2025</p><br>
-    <p>Software Developer Intern: Developed full-stack AI blogging platform using ASP.NET Core, React, SQL Server. Improved usability and end-to-end software practices.</p>
-  </div>
+  <!-- Internship App Icon - below CMD and above Photos -->
+<div id="internship-app-icon">
+  <img src="assets/icons/internship.png" alt="Internship Icon">
+  <p>Work</p>
+</div>
 
-  <!-- Activities & Certifications -->
-  <div class="window" id="activities">
-    <h2>ACTIVITIES & CERTIFICATIONS</h2>
-    <ul>
-      <li>Secretary, CII-IWN DBCE Chapter – 2024-25</li>
-      <li>Treasurer, Dbeats – 2024-25</li>
-      <li>Hackathons: Smart India Hackathon, IEEEXtreme, Inspirathon, Converge 2.0</li>
-      <li>Volunteering: Content Writer & Social Media Designer, HercsFuture</li>
-      <li>Certifications: Web Bootcamp (Udemy), Figma UI/UX, Diploma in Computer Applications</li>
-    </ul>
+<!-- Internship Modal -->
+<div class="window-modal" id="internship-window">
+  <div class="window-header">
+    <span>Internship Projects</span>
+    <button class="close-btn" id="close-internship-window">X</button>
   </div>
+  <div class="window-body">
+    <h2>Persistent Systems Internship</h2>
+    <p>Developed a full-stack AI-powered blogging platform with a responsive user interface, enhancing usability and
+accessibility.</p>
+<p>• Built and integrated REST APIs using ASP.NET Core, React, and SQL Server to support secure data management
+and seamless frontend-backend interaction.</p>
+<p>• Collaborated in a 5-member team, improving problem-solving, debugging, and end-to-end software development
+practices.</p>
+ <p>Here are some snapshots:</p>
+    <div class="internship-gallery">
+      <img src="assets/images/project1.jpg" alt="Project 1">
+      <img src="assets/images/project2.jpg" alt="Project 2">
+      <img src="assets/images/project3.png" alt="Project 3">
+    </div>
+  </div>
+</div>
+
 
  <!-- Photo App Icon -->
 <div id="photo-app-icon" class="desktop-icon">
