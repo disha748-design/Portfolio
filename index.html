@@ -10,12 +10,13 @@
 <body>
   <nav id="navbar">
     <ul>
+      <li id="hobby-icon" title="Show my hobbies" a href="#hobbies" style="cursor:pointer;">
+        ⏻
+        <p style="font-size: 5px; colour:#fff">Tap to start!</p>
+      </li>
       <li><a href="#hero">Home</a></li>
       <li><a href="#projects">Projects</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li id="hobby-icon" title="Show my hobbies">
-        💖 Tap 
-      </li>
+      <li id="time-date" style="margin-left:auto; font-family:'Press Start 2P', monospace; font-size:11px;"></li>
     </ul>
   </nav>
 
@@ -103,13 +104,35 @@
   </div>
 </div>
 
-  <!-- Skills Section -->
-  <div class="window" id="skills">
-    <h2>SKILLS</h2>
-    <div class="skill"><div class="skill-name">Python / AI & ML</div><div class="skill-bar"><div class="skill-bar-fill" data-width="90%"></div></div></div>
-    <div class="skill"><div class="skill-name">Web Development (React / ASP.NET Core)</div><div class="skill-bar"><div class="skill-bar-fill" data-width="85%"></div></div></div>
-    <div class="skill"><div class="skill-name">Data Analysis / Visualization</div><div class="skill-bar"><div class="skill-bar-fill" data-width="80%"></div></div></div>
+ <!-- Skills Icon -->
+<div id="skills-icon">
+  <img src="assets/icons/location.png" alt="Skills" />
+  <p style="color: #00FF00;">Skills</p>
+</div>
+
+<!-- Skills Modal -->
+<div id="skills-modal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="close-skills">&times;</span>
+    <h2>MY SKILLS</h2>
+    <div class="skill-category">
+      <h3>Very Proficient</h3>
+      <div class="skill-item" data-level="95%">Python</div>
+      <div class="skill-item" data-level="90%">React</div>
+    </div>
+    <div class="skill-category">
+      <h3>Proficient</h3>
+      <div class="skill-item" data-level="80%">ASP.NET Core</div>
+      <div class="skill-item" data-level="75%">R</div>
+    </div>
+    <div class="skill-category">
+      <h3>Learning / Intermediate</h3>
+      <div class="skill-item" data-level="60%">Machine Learning</div>
+      <div class="skill-item" data-level="50%">Java</div>
+      <div class="skill-item" data-level="50%">C++</div>
+    </div>
   </div>
+</div>
 
   <!-- Projects Section -->
 <div class="window" id="projects">
@@ -171,6 +194,7 @@ practices.</p>
       <img src="assets/images/project2.jpg" alt="Project 2">
       <img src="assets/images/project3.png" alt="Project 3">
     </div>
+    
   </div>
 </div>
 

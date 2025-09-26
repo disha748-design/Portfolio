@@ -15,7 +15,6 @@ body {
   0% { top: -50px; transform: rotate(0deg); opacity: 1; }
   100% { top: 300px; transform: rotate(360deg); opacity: 0; }
 }
-
 .falling-house {
   position: fixed;
   left: 50px; /* will adjust in JS for random X */
@@ -25,6 +24,78 @@ body {
   pointer-events: none;
   animation: fall 1.5s forwards;
 }
+/* Internship Window Modal */
+#internship-app-icon + .window-modal,
+.window-modal.internship-modal {
+  background-color: #F0F0F0; /* keep light background */
+  color: #000000;            /* black text for readability */
+  font-family:'Times New Roman'; 
+  font-size: 12px;
+  border: 3px solid #000;
+  box-shadow: 4px 4px 0 #404040;
+  display: none;              /* still hidden initially */
+  z-index: 1000;
+}
+/* Small gallery images */
+.internship-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.internship-gallery img {
+  width: 100px;
+  height: auto;
+  cursor: pointer;
+  border: 2px solid #000;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  transition: transform 0.2s;
+}
+
+.internship-gallery img:hover {
+  transform: scale(1.1);
+}
+
+/* Modal styling */
+.modal {
+  display: none;           /* hidden by default */
+  position: fixed;
+  z-index: 5000;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 80%;
+  justify-content: center;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#caption {
+  text-align: center;
+  color: #fff;
+  margin-top: 10px;
+  font-family: 'Press Start 2P', monospace;
+}
+
 
 /* Headline */
 .headline-container {
@@ -106,6 +177,100 @@ body {
 #music { background-color: #FFB6C1; color: #800000; }
 .gallery { background-color: #E0FFFF; }
 
+/* Skills Icon */
+#skills-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: fixed;
+  top: 70px; 
+  left: 20px;
+  width: 60px; /* slightly bigger to fit text */
+  height: 60px;
+  z-index: 1000;
+  text-align: center;
+}
+
+#skills-icon img {
+  width: 40px;
+  height: 40px;
+}
+
+#skills-icon p {
+  font-size: 0.7rem;
+  margin: 2px 0 0 0;
+  color: #3E5F44;
+  font-family: 'Press Start 2P', monospace;
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  top: 80px; /* just below navbar */
+  left: 20px;
+  width: 350px;
+  max-height: 500px;
+  overflow-y: auto;
+  background: #fff;
+  border: 2px solid #3E5F44;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  padding: 15px;
+  z-index: 9999;
+}
+
+.modal-content h2 {
+  color: #3E5F44;
+  margin-bottom: 10px;
+  font-family: 'Press Start 2P', monospace;
+}
+
+.skill-category {
+  margin-bottom: 15px;
+}
+
+.skill-category h3 {
+  font-size: 1rem;
+  color: #5E936C;
+  margin-bottom: 5px;
+}
+
+.skill-item {
+  position: relative;
+  margin: 5px 0;
+  background: #E8FFD7;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.skill-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+/* Display skill level as text */
+.skill-item::after {
+  content: attr(data-level);
+  position: absolute;
+  right: 10px;
+  color: #3E5F44;
+  font-size: 0.8rem;
+}
+
+/* Close Button */
+.close {
+  color: #900;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  float: right;
+  margin-top: -10px;
+}
 
 /* Projects Grid */
 .projects-grid {
@@ -173,19 +338,11 @@ body {
   font-size: 18px; /* bigger font */
   line-height: 1.6; /* spacing between lines */
   border: 2px solid #5E936C;
-  color: #1a1a1a; /* visible text color */
+  color: #E8FFD7; /* visible text color */
   z-index: 1000;
   padding: 15px; /* space inside modal */
   border-radius: 8px; /* smooth corners */
   box-shadow: 0 0 15px rgba(0,0,0,0.5);
-}
-.window-modal img {
-  max-width: 100%;     /* image won’t exceed modal width */
-  height: auto;        /* maintain aspect ratio */
-  display: block;      /* remove inline gaps */
-  margin: 10px 0;      /* space above and below image */
-  border-radius: 5px;  /* optional: rounded corners */
-  box-shadow: 0 0 8px rgba(0,0,0,0.3); /* optional: subtle shadow */
 }
 
 .window-body {
@@ -194,7 +351,7 @@ body {
 
 .edu-box {
   background-color: #5E936C;
-  color: #000;
+  color: #E8FFD7;
   padding: 12px 15px; /* more space inside each box */
   border-radius: 5px;
   margin-bottom: 10px; /* space between boxes */
@@ -211,10 +368,10 @@ body {
   font-weight: bold;
 }
 .window-modal img {
-  max-width: 30%;     /* image won’t exceed modal width */
+  max-width: 100%;     /* image won’t exceed modal width */
   height: auto;        /* maintain aspect ratio */
-  display:flex;      /* remove inline gaps */
-  margin: 5px 0;      /* space above and below image */
+  display: block;      /* remove inline gaps */
+  margin: 10px 0;      /* space above and below image */
   border-radius: 5px;  /* optional: rounded corners */
   box-shadow: 0 0 8px rgba(0,0,0,0.3); /* optional: subtle shadow */
 }
@@ -428,6 +585,21 @@ body {
 @keyframes leg-left-walk { 0% { transform: rotate(0deg); } 100% { transform: rotate(30deg); } }
 @keyframes leg-right-walk { 0% { transform: rotate(0deg); } 100% { transform: rotate(-30deg); } }
 
+#hobbies {
+  display: block; /* always visible */
+  position: relative; /* or fixed if you want it floating */
+  top: 100px;      /* adjust as needed */
+  left: 0;         /* align under projects */
+  width: 100%;     /* or a specific width */
+  height: auto;    /* adjust height */
+  background: #fff;
+  border: 2px solid #3E5F44;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  padding: 10px;
+  overflow: hidden;
+  z-index: 1;
+}
 
 .hobby-item {
   position: absolute;
@@ -636,6 +808,8 @@ body {
   position: fixed;
   top: 150px; /* lower than CMD icon */
   right: 20px;
+  font-size: 12px;
+  font-family: 'Courier New', Courier, monospace;
   text-align: center;
   cursor: pointer;
   z-index: 1000;
@@ -652,6 +826,11 @@ body {
   font-size: 14px;
   font-family: 'Press Start 2P', monospace;
   margin-top: 4px;
+}
+.window-body .gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px; /* space between images */
 }
 
 /* CMD Terminal Modal */

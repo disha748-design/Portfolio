@@ -10,21 +10,25 @@ document.addEventListener("DOMContentLoaded", () => {
   let charIndex = 0;
 
   function typeLine() {
-    if (lineIndex < textLines.length) {
-      if (charIndex < textLines[lineIndex].length) {
-        headline.innerHTML += textLines[lineIndex].charAt(charIndex);
-        charIndex++;
-        setTimeout(typeLine, 50);
-      } else {
-        headline.innerHTML += "<br>";
-        lineIndex++;
-        charIndex = 0;
-        setTimeout(typeLine, 500);
-      }
+  if (lineIndex < textLines.length) {
+    if (charIndex < textLines[lineIndex].length) {
+      headline.innerHTML += textLines[lineIndex].charAt(charIndex);
+      charIndex++;
+      setTimeout(typeLine, 50);
     } else {
-      headline.innerHTML += '<span class="cursor"></span>';
+      // Only add <br> if this is NOT the last line
+      if (lineIndex < textLines.length - 1) {
+        headline.innerHTML += "<br>";
+      }
+      lineIndex++;
+      charIndex = 0;
+      setTimeout(typeLine, 500);
     }
+  } else {
+    headline.innerHTML += '<span class="cursor"></span>';
   }
+}
+
   typeLine();
 
   // --- Click sound for buttons ---
@@ -32,6 +36,21 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll("button").forEach((btn) => {
     btn.addEventListener("click", () => clickSound.play());
   });
+  function updateTimeDate() {
+  const now = new Date();
+  const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+  const dateStr = now.toLocaleDateString(undefined, options);
+  const timeStr = now.toLocaleTimeString(undefined, { hour12: false });
+  
+  const timeDateElem = document.getElementById("time-date");
+  if (timeDateElem) {
+    timeDateElem.textContent = `${dateStr} | ${timeStr}`;
+  }
+}
+
+// Update every second
+updateTimeDate(); // initial call
+setInterval(updateTimeDate, 1000);
 
   // --- Windows scroll animation ---
   const windows = document.querySelectorAll(".window");
@@ -44,12 +63,30 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // --- Animate Skill Bars ---
-  window.addEventListener("load", () => {
-    const fills = document.querySelectorAll(".skill-bar-fill");
-    fills.forEach(
-      (fill) => (fill.style.width = fill.getAttribute("data-width"))
-    );
+  const skillsIcon = document.getElementById("skills-icon");
+  const skillsModal = document.getElementById("skills-modal");
+  const closeSkills = document.getElementById("close-skills");
+
+  if (!skillsIcon || !skillsModal || !closeSkills) {
+    console.error("Skills elements not found. Check your HTML IDs.");
+    return;
+  }
+
+  // Open modal
+  skillsIcon.addEventListener("click", () => {
+    skillsModal.style.display = "block";
+  });
+
+  // Close modal
+  closeSkills.addEventListener("click", () => {
+    skillsModal.style.display = "none";
+  });
+
+  // Close modal on click outside
+  window.addEventListener("click", (e) => {
+    if (e.target === skillsModal) {
+      skillsModal.style.display = "none";
+    }
   });
 
   // --- Floating music player ---
@@ -101,6 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (targetWindow) targetWindow.style.display = "block";
     });
   });
+  
 
   // --- Hobbies ---
   const hobbyIcon = document.getElementById("hobby-icon");
@@ -112,9 +150,6 @@ document.addEventListener("DOMContentLoaded", () => {
       document.body.appendChild(house);
       house.innerHTML = "💖";
       house.addEventListener("animationend", () => house.remove());
-
-      const hobbiesSection = document.getElementById("hobbies");
-      if (hobbiesSection) hobbiesSection.style.display = "block";
     });
   }
 
@@ -212,21 +247,49 @@ document.addEventListener("DOMContentLoaded", () => {
       internshipWindow.style.display = "none";
     });
   }
- const ieIcon = document.getElementById("ie-icon");
-const eduModal = document.getElementById("education-modal");
-const closeEdu = document.getElementById("close-education");
 
-if (ieIcon && eduModal && closeEdu) {
-  // toggle modal on icon click
-  ieIcon.addEventListener("click", () => {
-    eduModal.style.display = eduModal.style.display === "block" ? "none" : "block";
-  });
+  // --- Education Modal ---
+  const ieIcon = document.getElementById("ie-icon");
+  const eduModal = document.getElementById("education-modal");
+  const closeEdu = document.getElementById("close-education");
 
-  // close modal
-  closeEdu.addEventListener("click", () => {
-    eduModal.style.display = "none";
-  });
-}
+  if (ieIcon && eduModal && closeEdu) {
+    ieIcon.addEventListener("click", () => {
+      eduModal.style.display = eduModal.style.display === "block" ? "none" : "block";
+    });
+
+    closeEdu.addEventListener("click", () => {
+      eduModal.style.display = "none";
+    });
+  }
+
+  // --- Internship Gallery Modal ---
+  const modal = document.getElementById("modal");
+  const modalImg = document.getElementById("modal-img");
+  const captionText = document.getElementById("caption");
+  const closeBtn = document.querySelector(".close");
+  const internshipImages = document.querySelectorAll(".internship-gallery img");
+
+  if(modal && modalImg && captionText && closeBtn && internshipImages.length > 0) {
+    // Show modal on page load with first image
+    modal.style.display = "block";
+    modalImg.src = internshipImages[0].src;
+    captionText.textContent = internshipImages[0].alt;
+
+    // Click on images to open modal
+    internshipImages.forEach(img => {
+      img.addEventListener("click", () => {
+        modal.style.display = "block";
+        modalImg.src = img.src;
+        captionText.textContent = img.alt;
+      });
+    });
+
+    // Close modal
+    closeBtn.addEventListener("click", () => {
+      modal.style.display = "none";
+    });
+  }
 
   // --- CMD Terminal ---
   const cmdIcon = document.getElementById("cmd-icon");
