@@ -15,7 +15,6 @@
         <p style="font-size: 5px; colour:#fff">Tap to start!</p>
       </li>
       <li><a href="#hero">Home</a></li>
-      <li><a href="#projects">Projects</a></li>
       <li id="time-date" style="margin-left:auto; font-family:'Press Start 2P', monospace; font-size:11px;"></li>
     </ul>
   </nav>
@@ -133,13 +132,19 @@
     </div>
   </div>
 </div>
+<!-- Game Icon -->
+<div id="game-icon" style="cursor:pointer; position:fixed; top:130px; left:20px; width:40px; height:40px; z-index:1000;">
+  <img src="assets/icons/game.png" alt="Projects" />
+  <p>Projects</p>
+</div>
 
-  <!-- Projects Section -->
-<div class="window" id="projects">
-  <h2>PROJECTS</h2>
-  <div class="projects-grid">
-    
-    <div class="project">
+<!-- Projects Modal -->
+<div id="projects-modal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="close-projects">&times;</span>
+    <h2>MY PROJECTS</h2>
+    <div class="projects-grid-modal">
+      <div class="project">
       <h3><a href="https://github.com/disha748-design/interest-explorer" target="_blank">Interest Explorer</a></h3>
       <p>Personalized hobby recommendations with fuzzy logic and evolutionary algorithms.</p>
     </div>
@@ -163,11 +168,12 @@
       <h3><a href="https://github.com/disha748-design/rakhi-for-bro" target="_blank">Rakhi Website</a></h3>
       <p>WebAR-based Raksha Bandhan website where users can have a virtual rakhi on their wrists using their camera.</p>
     </div>
-
+  </div>
+    </div>
   </div>
 </div>
 
-
+  
   <!-- Internship App Icon - below CMD and above Photos -->
 <div id="internship-app-icon">
   <img src="assets/icons/internship.png" alt="Internship Icon">

@@ -139,7 +139,33 @@ setInterval(updateTimeDate, 1000);
     });
   });
   
+const gameIcon = document.getElementById("game-icon");
+  const projectsModal = document.getElementById("projects-modal");
+  const closeProjects = document.getElementById("close-projects");
 
+  // Open modal when game icon is clicked
+  gameIcon.addEventListener("click", () => {
+    projectsModal.style.display = "block";
+  });
+
+  // Close modal when X is clicked
+  closeProjects.addEventListener("click", () => {
+    projectsModal.style.display = "none";
+  });
+
+  // Close modal when clicking outside modal content
+  window.addEventListener("click", (e) => {
+    if (e.target === projectsModal) {
+      projectsModal.style.display = "none";
+    }
+  });
+
+  // (Optional) close modal with ESC key
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      projectsModal.style.display = "none";
+    }
+  });
   // --- Hobbies ---
   const hobbyIcon = document.getElementById("hobby-icon");
   if (hobbyIcon) {
