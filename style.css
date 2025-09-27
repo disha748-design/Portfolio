@@ -641,6 +641,73 @@ body {
   border-radius: 5px;  /* optional: rounded corners */
   box-shadow: 0 0 8px rgba(0,0,0,0.3); /* optional: subtle shadow */
 }
+.window-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  max-width: 90%;
+  max-height: 70%;
+  background-color: #fff8dc;
+  border: 3px solid #3E5F44;
+  border-radius: 10px;
+  box-shadow: 5px 5px 0 #3E5F44;
+  display: none;
+  z-index: 2000;
+  font-family: 'Press Start 2P', monospace;
+  overflow-y: auto;
+}
+
+.window-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #000080; /* Blue header */
+  color: #fff;
+  padding: 8px 12px;
+  font-size: 14px;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+}
+
+.window-header .close-btn {
+  background: #ff0c0c; /* Red close button */
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 2px 8px;
+  border-radius: 5px;
+  transition: transform 0.2s;
+}
+.window-header .close-btn:hover {
+  transform: scale(1.2);
+}
+
+.window-body {
+  padding: 12px;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.skill-item {
+  background: #f7fff9;
+  border: 2px solid #000000;
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: default;
+  font: 14px 'Press Start 2P', monospace;
+  color: #1a1a1a;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.skill-item:hover {
+  transform: scale(1.05);
+  background: #e7ec53;
+}
 
 /* Photo App Icon - below CMD */
 #photo-app-icon {
