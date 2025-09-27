@@ -31,11 +31,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   typeLine();
 
-  // --- Click sound for buttons ---
-  const clickSound = new Audio("assets/sounds/click.wav");
-  document.querySelectorAll("button").forEach((btn) => {
-    btn.addEventListener("click", () => clickSound.play());
-  });
+ // --- Click sound for any click on the page ---
+const clickSound = new Audio("assets/sounds/click.wav");
+
+document.addEventListener("click", (event) => {
+  // Optional: prevent sound on right-click
+  if (event.button === 0) { // 0 = left click
+    clickSound.currentTime = 0; // rewind so rapid clicks work
+    clickSound.play();
+  }
+});
+
+
   function updateTimeDate() {
   const now = new Date();
   const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
@@ -166,74 +173,7 @@ const gameIcon = document.getElementById("game-icon");
       projectsModal.style.display = "none";
     }
   });
-  // --- Hobbies ---
-  const hobbyIcon = document.getElementById("hobby-icon");
-  if (hobbyIcon) {
-    hobbyIcon.addEventListener("click", () => {
-      const house = document.createElement("div");
-      house.classList.add("falling-house");
-      house.style.left = Math.random() * (window.innerWidth - 50) + "px";
-      document.body.appendChild(house);
-      house.innerHTML = "💖";
-      house.addEventListener("animationend", () => house.remove());
-    });
-  }
-
-  const avatar = document.getElementById("avatar");
-  const hobbyItems = document.querySelectorAll(".hobby-item");
-  const hobbyWindow = document.getElementById("hobby-window");
-  const hobbyTitle = document.getElementById("hobby-title");
-  const hobbyDesc = document.getElementById("hobby-desc");
-
-  const hobbyDescriptions = {
-    Writing: "I write essays, poems, and articles whenever inspiration strikes.",
-    Ukulele: "I love playing the ukulele and creating small melodies.",
-    Colouring: "I enjoy colouring in children’s books with oil pastels or colour pencils.",
-    "Reading Books": "I read literature fiction, romance, and classic books.",
-    "YT Video Essays": "Watching YouTube video essays about random topics is fun.",
-    "Substack Articles": "I enjoy reading articles on Substack to explore ideas.",
-    Crochet: "I am an intermediate-level crochet enthusiast, creating patterns and designs.",
-    Dancing: "I used to dance a lot when I was a kid.",
-    Singing: "I enjoy singing Taylor Swift songs for fun.",
-    Journalling: "I journal to track my thoughts, moods, and reflections.",
-    "K-Dramas": "I watch K-Dramas for relaxation and storytelling inspiration.",
-    Cooking: "I love cooking, especially chopping vegetables efficiently.",
-  };
-
-  hobbyItems.forEach((item) => {
-    item.addEventListener("click", () => {
-      const rect = item.getBoundingClientRect();
-      const parentRect = item.parentElement.getBoundingClientRect();
-
-      const targetTop = rect.top - parentRect.top;
-      const targetLeft = rect.left - parentRect.left;
-
-      avatar.classList.add("walking");
-
-      const duration = 500;
-      const startTop = parseInt(avatar.style.top) || 0;
-      const startLeft = parseInt(avatar.style.left) || 0;
-      const startTime = performance.now();
-
-      function animate(time) {
-        const elapsed = time - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-
-        avatar.style.top = startTop + (targetTop - startTop) * progress + "px";
-        avatar.style.left = startLeft + (targetLeft - startLeft) * progress + "px";
-
-        if (progress < 1) requestAnimationFrame(animate);
-        else avatar.classList.remove("walking");
-      }
-
-      requestAnimationFrame(animate);
-
-      hobbyTitle.textContent = item.dataset.name;
-      hobbyDesc.textContent = hobbyDescriptions[item.dataset.name] || "";
-      hobbyWindow.style.display = "block";
-    });
-  });
-
+ 
   // --- Contact Popup ---
   const insertCoinBtn = document.getElementById("insert-coin");
   const contactPopup = document.getElementById("contact-popup");
@@ -273,6 +213,7 @@ const gameIcon = document.getElementById("game-icon");
       internshipWindow.style.display = "none";
     });
   }
+  
 
   // --- Education Modal ---
   const ieIcon = document.getElementById("ie-icon");
@@ -288,6 +229,7 @@ const gameIcon = document.getElementById("game-icon");
       eduModal.style.display = "none";
     });
   }
+  
 
   // --- Internship Gallery Modal ---
   const modal = document.getElementById("modal");

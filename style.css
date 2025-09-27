@@ -1,3 +1,4 @@
+
 /* Reset & Body */
 * { margin:0; padding:0; box-sizing:border-box; }
 body {
@@ -15,15 +16,75 @@ body {
   0% { top: -50px; transform: rotate(0deg); opacity: 1; }
   100% { top: 300px; transform: rotate(360deg); opacity: 0; }
 }
-.falling-house {
-  position: fixed;
-  left: 50px; /* will adjust in JS for random X */
-  top: -50px;
-  font-size: 2rem; /* bigger for fun */
-  z-index: 2000;
-  pointer-events: none;
-  animation: fall 1.5s forwards;
+/* Hero section full-screen center */
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 20vh; /* Full screen height */
+  background-color: #aaa3a3; 
+  color: #000; 
+  font-family: 'Press Start 2P', monospace; /* Matches your style */
+  font-size: 16px;
 }
+
+/* Typing cursor */
+.cursor {
+  display: inline-block;
+  width: 10px;
+  height: 1em;
+  background: #aaa3a3;
+  margin-left: 5px;
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  50.1%, 100% { opacity: 0; }
+}
+.modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 450px;
+  max-width: 90%;
+  background-color: #fff;
+  border: 2px solid #3E5F44;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  z-index: 9999;
+  overflow: hidden;
+  font-family: 'Press Start 2P', monospace;
+}
+
+.modal-header {
+  background-color: #3E5F44;
+  color: #fff;
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h2 {
+  font-size: 14px;
+  margin: 0;
+}
+
+.modal-header .close {
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.modal-body {
+  padding: 15px;
+  color: #000;
+  font-size: 12px;
+}
+
 /* Internship Window Modal */
 #internship-app-icon + .window-modal,
 .window-modal.internship-modal {
@@ -35,6 +96,8 @@ body {
   box-shadow: 4px 4px 0 #404040;
   display: none;              /* still hidden initially */
   z-index: 1000;
+  width: 600px;            /* wider for images */
+  max-height: 500px;       /* taller for images */
 }
 /* Small gallery images */
 .internship-gallery {
@@ -125,7 +188,7 @@ body {
 #navbar {
   width: 100%;
   background-color: #000080;
-  padding: 5px 0;
+  padding: 10px 0;
   box-shadow: 2px 2px 0px #000;
   position: fixed;
   top: 0;
@@ -166,14 +229,117 @@ body {
   transition: all 0.5s ease-in-out;
 }
 .window.visible { opacity:1; transform: translateY(0); }
+.projects-grid-modal{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+/* Modal Wrapper */
+#projects-modal {
+  display: none; /* hidden by default */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* center it */
+  width: 700px; /* adjust width */
+  max-height: 80vh; /* max height relative to viewport */
+  overflow-y: auto; /* vertical scroll if content overflows */
+  background: #fff;
+  border: 2px solid #3E5F44;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  z-index: 9999;
+  padding: 0; /* header touches top */
+  font-family: "Press Start 2P", monospace;
+}
 
-/* Section Colors */
-#hero { background-color: #C0C0C0; color: #000080; }
-#projects { background-color: #F0E68C; color: #000; }
-#skills { background-color: #FFD700; color: #000080; }
-#contact { background-color: #98FB98; color: #006400; }
-#music { background-color: #FFB6C1; color: #800000; }
-.gallery { background-color: #E0FFFF; }
+/* Scrollbar styling for modern browsers */
+#projects-modal::-webkit-scrollbar {
+  width: 8px;
+}
+
+#projects-modal::-webkit-scrollbar-thumb {
+  background-color: #3E5F44;
+  border-radius: 4px;
+}
+
+#projects-modal::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}
+
+/* Close button */
+#projects-modal .close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  font-weight: bold;
+  color: red;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+#projects-modal .close:hover {
+  transform: scale(1.2);
+}
+
+/* Header */
+.proj-modal-header {
+  background: #000080; /* blue header */
+  color: white;
+  padding: 12px 15px;
+  border-radius: 10px 10px 0 0;
+  text-align: left;
+}
+
+/* Projects body/grid */
+.projects-grid-modal {
+  display: flex;
+  flex-direction: column; /* stack cards vertically */
+  gap: 12px;
+  padding: 15px;
+}
+
+/* Each project card */
+.project-card {
+  width: 100%;
+  background: #e8fe98;
+  border: 2px solid #3E5F44;
+  border-radius: 8px;
+  padding: 12px;
+  transition: transform 0.2s, background 0.2s;
+  cursor: pointer;
+}
+.modal-content-header{
+  background: #000080; /* blue header */
+  color: white;
+  padding: 12px 15px;
+  border-radius: 5px 5px 0 0;
+  text-align: left;
+}
+.project-card:hover {
+  transform: scale(1.03);
+  background: #000000;
+}
+
+/* Project titles and links */
+.project-card h3 {
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+.project-card h3 a {
+  text-decoration: none;
+  color: #1eb923;
+}
+.project-card h3 a:hover {
+  text-decoration: underline;
+  color: #01de22;
+}
+
+/* Project description */
+.project-card p {
+  font-size: 12px;
+  line-height: 1.4em;
+}
 
 /* --- Game Icon Styles --- */
 #game-icon {
@@ -183,13 +349,13 @@ body {
   justify-content: center;
   cursor: pointer;
   position: fixed;
-  top: 100px; 
+  top: 50px; 
   left: 20px;
   width: 60px; /* slightly bigger to fit text */
   height: 60px;
   z-index: 1000;
   text-align: center;
-  margin: 80px 0 10px 8px; /* space from navbar (top) and left */
+  margin: 50px 0 7px 8px; /* space from navbar (top) and left */
 }
 
 #game-icon img {
@@ -208,92 +374,6 @@ body {
   transform: scale(1.1);
 }
 
-
-/* Projects Modal Wrapper */
-#projects-modal {
-  display: none; /* hidden by default */
-  position: fixed;
-  top: 150px; /* sits below Skills */
-  left: 20px;
-  width: 820px;
-  max-height: 520px;
-  background: #ffffff;
-  border: 3px solid #3E5F44;
-  border-radius: 15px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.4);
-  z-index: 1000;
-  overflow-y: auto;
-  padding: 20px;
-  font-family: "Press Start 2P", monospace; /* retro look if you want */
-}
-
-/* Modal Inner Content */
-#projects-modal .modal-content {
-  position: relative;
-}
-
-/* Close button */
-#close-projects {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 24px;
-  font-weight: bold;
-  color: #3E5F44;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-#close-projects:hover {
-  transform: scale(1.3);
-  color: #ff4d4d;
-}
-
-/* Projects Grid */
-.projects-grid-modal {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  margin-top: 20px;
-}
-
-/* Each project card */
-.projects-grid-modal .project {
-  flex: 1 1 240px;
-  background: #f7fff9;
-  border: 2px solid #5E936C;
-  border-radius: 12px;
-  padding: 15px;
-  transition: transform 0.25s, background 0.25s;
-  cursor: pointer;
-  box-shadow: 3px 3px 0px #3E5F44;
-}
-
-.projects-grid-modal .project:hover {
-  transform: scale(1.08) rotate(-2deg);
-  background: #93DA97;
-}
-
-/* Project Titles */
-.projects-grid-modal .project h3 {
-  margin-bottom: 8px;
-  font-size: 16px;
-}
-.projects-grid-modal .project h3 a {
-  text-decoration: none;
-  color: #3E5F44;
-}
-.projects-grid-modal .project h3 a:hover {
-  text-decoration: underline;
-  color: #000;
-}
-
-/* Project Descriptions */
-.projects-grid-modal .project p {
-  font-size: 13px;
-  color: #333;
-  line-height: 1.4em;
-}
-
 /* Skills Icon */
 #skills-icon {
   display: flex;
@@ -302,7 +382,7 @@ body {
   justify-content: center;
   cursor: pointer;
   position: fixed;
-  top: 100px; 
+  top: 50px; 
   left: 20px;
   width: 60px; /* slightly bigger to fit text */
   height: 60px;
@@ -427,8 +507,23 @@ body {
 #contact a { display:block; margin:5px 0; color:#00FF00; text-decoration:none; transition:all 0.2s; }
 #contact a:hover { text-shadow:0 0 5px #00FF00; }
 
-/* Footer */
-.footer { margin:30px 0; font-size:0.7rem; color:#9900CC; }
+.paint-icon {
+  position: fixed;
+  top: 270px; /* closer to top */
+  left: 5px;
+  text-align: center;
+  cursor: pointer;
+  z-index: 1000;
+}
+.paint-icon img {
+  width: 60px;
+  height: 60px;
+  display: block;
+  margin: 0 auto 5px auto;
+}
+.paint-icon img:hover {
+  transform: scale(1.1);
+}
 
 .desktop-icon {
   position: fixed;
@@ -437,6 +532,56 @@ body {
   text-align: center;
   cursor: pointer;
   z-index: 1000;
+}
+.hobby-sticker {
+  font-size: 24px;
+  cursor: pointer;
+  transition: transform 0.2s, filter 0.2s;
+}
+.hobby-sticker:hover {
+  transform: scale(1.3) rotate(-5deg);
+  filter: drop-shadow(0 0 5px #ffd700);
+}
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* center horizontally + vertically */
+  width: 500px;
+  max-height: 450px;
+  background: #fff8dc;
+  border: 2px solid #3E5F44;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  padding: 0;  /* remove inner padding, header/body handle their own */
+  z-index: 9999;
+  overflow: hidden;
+  font-family: 'Press Start 2P', monospace;
+}
+
+/* Modal header */
+.modal-header {
+  background: #000080; /* dark green/navy bar */
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Close button */
+.modal-header .close {
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  color: red;
+}
+
+.modal-body {
+  padding: 24px;
+  background: #fff8dc; /* canvas-like background */
 }
 
 .desktop-icon img {
@@ -482,11 +627,11 @@ body {
 }
 
 .window-header {
-  display: flex;
-  justify-content: space-between;
-  background-color: #3E5F44;
-  padding: 5px 10px;
-  font-weight: bold;
+ background: #000080; /* blue header */
+  color: white;
+  padding: 12px 15px;
+  border-radius: 10px 10px 0 0;
+  text-align: left;
 }
 .window-modal img {
   max-width: 100%;     /* image won’t exceed modal width */
@@ -501,7 +646,7 @@ body {
 #photo-app-icon {
   position: fixed;
   top: 350px; /* lower than CMD icon */
-  right: 20px;
+  right: 10px;
   text-align: center;
   cursor: pointer;
   z-index: 1000;
@@ -706,50 +851,7 @@ body {
 @keyframes leg-left-walk { 0% { transform: rotate(0deg); } 100% { transform: rotate(30deg); } }
 @keyframes leg-right-walk { 0% { transform: rotate(0deg); } 100% { transform: rotate(-30deg); } }
 
-#hobbies {
-  display: block; /* always visible */
-  position: relative; /* or fixed if you want it floating */
-  top: 100px;      /* adjust as needed */
-  left: 0;         /* align under projects */
-  width: 100%;     /* or a specific width */
-  height: auto;    /* adjust height */
-  background: #fff;
-  border: 2px solid #3E5F44;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.3);
-  padding: 10px;
-  overflow: hidden;
-  z-index: 1;
-}
 
-.hobby-item {
-  position: absolute;
-  font-size: 1.5rem;
-  cursor: pointer;
-  user-select: none;
-  transition: transform 0.2s;
-}
-.hobby-item:hover { transform: scale(1.2); }
-
-#hobby-window {
-  position: absolute;
-  top: 50px;
-  left: 50px;
-  width: 250px;
-  padding: 10px;
-  background: #F0F0F0;
-  border: 3px solid #000;
-  box-shadow: 4px 4px 0 #404040;
-  z-index: 100;
-}
-#hobby-window h4 { margin-bottom: 5px; color:#000080; }
-#hobby-window button {
-  cursor:pointer;
-  font-family:'Press Start 2P', monospace;
-  border:2px solid #000;
-  background:#F0F0F0;
-  padding:5px;
-}
 /* Floating Arcade Widget */
 #arcade-widget {
   position: fixed;
@@ -797,8 +899,6 @@ body {
   align-items: center;
   background-color: #000080;
   color: #fff;
-  padding: 5px 10px;
-  border-bottom: 2px solid #000;
 }
 
 .close-btn {
@@ -975,41 +1075,6 @@ body {
   flex-direction: column;
   overflow: hidden;
   display: flex;
-}
-
-/* CMD Header */
-.window-header.cmd-terminal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #000080;
-  color: #fff;
-  padding: 5px 10px;
-  border-bottom: 2px solid #000;
-  position: relative;
-}
-
-/* Close Button */
-.close-btn.cmd-close {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  z-index: 2100;
-  background: #FF0000;
-  border: 2px solid #000;
-  color: #fff;
-  width: 25px;
-  height: 25px;
-  cursor: pointer;
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.7rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.close-btn.cmd-close:hover {
-  background: #FFA500;
-  color: #000;
 }
 
 /* Terminal Body */

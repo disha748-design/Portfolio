@@ -10,23 +10,18 @@
 <body>
   <nav id="navbar">
     <ul>
-      <li id="hobby-icon" title="Show my hobbies">
-        ⏻
-        <p style="font-size: 5px; colour:#fff">Tap to start!</p>
-      </li>
-      <li><a href="#hero">Home</a></li>
       <li id="time-date" style="margin-left:auto; font-family:'Press Start 2P', monospace; font-size:11px;"></li>
     </ul>
   </nav>
-
   <!-- Hero Section -->
-  <div class="window" id="hero">
-    <h1 id="headline"></h1>
-  </div>
+<div class="hero">
+  <h1 id="headline"></h1>
+</div>
+
 
 <!-- Floating Arcade Contact -->
 <div id="arcade-widget">
-  <p>INSERT COIN TO CONTACT ME!</p>
+  <p style="font-size: 12px;">INSERT COIN TO CONTACT ME!</p>
   <img src="assets/images/arcade.png" alt="Arcade Machine">
   <button id="insert-coin">INSERT COIN</button>
 </div>
@@ -39,7 +34,7 @@
   </a>
   <p style="font-size:12px; color:gray;">If this doesn’t open, copy my email: <b>dishatalaulikar@gmail.com</b></p>
   <p><a href="https://github.com/disha748-design" target="_blank">💻 GitHub</a></p>
-  <p><a href="https://www.linkedin.com/in/disha748" target="_blank">🔗 LinkedIn</a></p>
+  <p><a href="https://www.linkedin.com/in/disha-talaulikar-48371b234/" target="_blank">🔗 LinkedIn</a></p>
 </div>
 
 
@@ -111,9 +106,11 @@
 
 <!-- Skills Modal -->
 <div id="skills-modal" class="modal">
-  <div class="modal-content">
+  <div class="modal-content-header">
+    <h2 style="font-size: 16px;">MY SKILLS</h2>
     <span class="close" id="close-skills">&times;</span>
-    <h2>MY SKILLS</h2>
+  </div>
+     <div class="modal-content">
     <div class="skill-category">
       <h3>Very Proficient</h3>
       <div class="skill-item" data-level="95%">Python</div>
@@ -140,36 +137,56 @@
 
 <!-- Projects Modal -->
 <div id="projects-modal" class="modal">
-  <div class="modal-content">
     <span class="close" id="close-projects">&times;</span>
-    <h2>MY PROJECTS</h2>
+   <div class="proj-modal-header">
+    <h2>My PROJECTS</h2>
+  </div>
     <div class="projects-grid-modal">
-      <div class="project">
+      <div class="project-card">
       <h3><a href="https://github.com/disha748-design/interest-explorer" target="_blank">Interest Explorer</a></h3>
       <p>Personalized hobby recommendations with fuzzy logic and evolutionary algorithms.</p>
     </div>
 
-    <div class="project">
+    <div class="project-card">
       <h3><a href="https://github.com/disha748-design/medtracker" target="_blank">MedTracker</a></h3>
       <p>Personal medicine tracker with automated reminders and secure data storage.</p>
     </div>
 
-    <div class="project">
+    <div class="project-card">
       <h3><a href="https://github.com/disha748-design/bookish" target="_blank">Bookish</a></h3>
       <p>Java app for cataloging and tracking books offline.</p>
     </div>
 
-    <div class="project">
+    <div class="project-card">
       <h3><a href="https://github.com/disha748-design/Todo" target="_blank">My Planner</a></h3>
   <p>A productivity planner site to make to-do lists, have pomodoro sessions, journal your feelings, and fill your mood and gratitude.</p>
     </div>
 
-    <div class="project">
+    <div class="project-card">
       <h3><a href="https://github.com/disha748-design/rakhi-for-bro" target="_blank">Rakhi Website</a></h3>
       <p>WebAR-based Raksha Bandhan website where users can have a virtual rakhi on their wrists using their camera.</p>
     </div>
   </div>
     </div>
+  </div>
+</div>
+<!-- Paint App Icon -->
+<div id="paint-app-icon" class="paint-icon">
+  <img src="assets/icons/paint.png" alt="Paint App Icon" />
+  <p style="font-size: 12px;">Hobbies</p>
+</div>
+
+<!-- Paint / Hobby Board Modal -->
+<div id="paint-modal" class="modal">
+  <div class="modal-header">
+    <h2>My Hobbies Board</h2>
+    <span class="close" id="close-paint">&times;</span>
+  </div>
+  <div class="modal-body">
+    <div id="hobby-board" style="position:relative; width:400px; height:300px; background:#fff8dc; border:1px solid #3E5F44;">
+      <!-- Hobby items will be dynamically added here -->
+    </div>
+    <div id="hobby-desc" style="margin-top:10px; font-size:12px; min-height:20px; font-family:'Press Start 2P', monospace;"></div>
   </div>
 </div>
 
@@ -187,20 +204,25 @@
     <button class="close-btn" id="close-internship-window">X</button>
   </div>
   <div class="window-body">
-    <h2>Persistent Systems Internship</h2>
-    <p>Developed a full-stack AI-powered blogging platform with a responsive user interface, enhancing usability and
+    <h2 style="font-size: 16px;">Persistent Systems Internship (July-Sept 2025)</h2>
+    <p style="font-size: 14px;">Developed a full-stack AI-powered blogging platform with a responsive user interface, enhancing usability and
 accessibility.</p>
-<p>• Built and integrated REST APIs using ASP.NET Core, React, and SQL Server to support secure data management
+<p style="font-size: 14px;">• Built and integrated REST APIs using ASP.NET Core, React, and SQL Server to support secure data management
 and seamless frontend-backend interaction.</p>
-<p>• Collaborated in a 5-member team, improving problem-solving, debugging, and end-to-end software development
+<p style="font-size: 14px;">• Collaborated in a 5-member team, improving problem-solving, debugging, and end-to-end software development
 practices.</p>
- <p>Here are some snapshots:</p>
+ <p style="font-size: 14px;">Here are some snapshots:</p>
     <div class="internship-gallery">
       <img src="assets/images/project1.jpg" alt="Project 1">
       <img src="assets/images/project2.jpg" alt="Project 2">
       <img src="assets/images/project3.png" alt="Project 3">
     </div>
-    
+    <!-- Image Modal -->
+<div id="img-modal" class="img-modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="full-img">
+  <div id="caption"></div>
+</div>
   </div>
 </div>
 
@@ -214,7 +236,7 @@ practices.</p>
 <!-- Photo Window Modal -->
 <div id="photo-window" class="window-modal">
   <div class="window-header">
-    <span>📸 My Photos</span>
+    <span>📸 My Recent Photos</span>
     <button id="close-photo-window" class="close-btn">✖</button>
   </div>
   <div class="window-body">
@@ -226,40 +248,6 @@ practices.</p>
       <img src="assets/images/photo5.jpg" alt="Photo5">
       <img src="assets/images/photo6.jpg" alt="Photo6">
     </div>
-  </div>
-</div>
-
-
-  <!-- Hobby Section -->
-<div id="hobbies" class="window">
-  <h2>HOBBY ARENA</h2>
-  <div id="game-area">
-    <div id="avatar">
-  <div class="arm-left"></div>
-  <div class="arm-right"></div>
-  <div class="leg-left"></div>
-  <div class="leg-right"></div>
-</div>
-    <!-- Hobby items -->
-    <div class="hobby-item" data-name="Writing" style="top: 20px; left: 50px;">📝</div>
-    <div class="hobby-item" data-name="Ukulele" style="top: 100px; left: 200px;">🎸</div>
-    <div class="hobby-item" data-name="Colouring" style="top: 50px; left: 400px;">🎨</div>
-    <div class="hobby-item" data-name="Reading Books" style="top: 150px; left: 50px;">📚</div>
-    <div class="hobby-item" data-name="YT Video Essays" style="top: 200px; left: 250px;">📹</div>
-    <div class="hobby-item" data-name="Substack Articles" style="top: 80px; left: 600px;">📰</div>
-    <div class="hobby-item" data-name="Crochet" style="top: 200px; left: 500px;">🧶</div>
-    <div class="hobby-item" data-name="Dancing" style="top: 250px; left: 100px;">💃</div>
-    <div class="hobby-item" data-name="Singing" style="top: 50px; left: 700px;">🎤</div>
-    <div class="hobby-item" data-name="Journalling" style="top: 150px; left: 400px;">📔</div>
-    <div class="hobby-item" data-name="K-Dramas" style="top: 220px; left: 650px;">📺</div>
-    <div class="hobby-item" data-name="Cooking" style="top: 280px; left: 350px;">🍳</div>
-  </div>
-
-  <!-- Hobby detail window -->
-  <div id="hobby-window" style="display:none;">
-    <h4 id="hobby-title"></h4>
-    <p id="hobby-desc"></p>
-    <button onclick="closeHobbyWindow()">Close</button>
   </div>
 </div>
 
@@ -296,12 +284,84 @@ practices.</p>
   </ul>
 </div>
 
-
-  <!-- Footer -->
-  <div class="footer">
-    © 2025 Disha S Talaulikar - hope you had fun!
-  </div>
-
   <script src="script.js"></script>
+  <script>
+  const paintIcon = document.getElementById("paint-app-icon");
+  const paintModal = document.getElementById("paint-modal");
+  const closePaint = document.getElementById("close-paint");
+  const hobbyBoard = document.getElementById("hobby-board");
+  const hobbyDesc = document.getElementById("hobby-desc");
+
+  // Hobby Data
+  const hobbies = {
+    Writing: "I write essays, poems, and articles whenever inspiration strikes.",
+    Ukulele: "I love playing the ukulele and creating small melodies.",
+    Colouring: "I enjoy colouring in children’s books with oil pastels or colour pencils.",
+    "Reading Books": "I read literature fiction, romance, and classic books.",
+    "YT Video Essays": "Watching YouTube video essays about random topics is fun.",
+    "Substack Articles": "I enjoy reading articles on Substack to explore ideas.",
+    Crochet: "I am an intermediate-level crochet enthusiast, creating patterns and designs.",
+    Dancing: "I used to dance a lot when I was a kid.",
+    Singing: "I enjoy singing Taylor Swift songs for fun.",
+    Journalling: "I journal to track my thoughts, moods, and reflections.",
+    "K-Dramas": "I watch K-Dramas for relaxation and storytelling inspiration.",
+    Cooking: "I love cooking, especially chopping vegetables efficiently.",
+  };
+
+  // Open modal when paint icon is clicked
+  paintIcon.addEventListener("click", () => {
+    paintModal.style.display = "block";
+    hobbyDesc.textContent = "🎨 Select a hobby to see details!";
+  });
+
+  // Close modal
+  closePaint.addEventListener("click", () => {
+    paintModal.style.display = "none";
+  });
+
+  // Dynamically add hobby "stickers" to the board
+  function renderHobbies() {
+    hobbyBoard.innerHTML = ""; // clear old
+    const emojis = {
+      Writing: "📝",
+      Ukulele: "🎸",
+      Colouring: "🎨",
+      "Reading Books": "📚",
+      "YT Video Essays": "📹",
+      "Substack Articles": "📰",
+      Crochet: "🧶",
+      Dancing: "💃",
+      Singing: "🎤",
+      Journalling: "📔",
+      "K-Dramas": "📺",
+      Cooking: "🍳",
+    };
+
+    let i = 0;
+    for (let hobby in hobbies) {
+      const hobbyItem = document.createElement("div");
+      hobbyItem.classList.add("hobby-sticker");
+      hobbyItem.innerHTML = emojis[hobby] || "⭐";
+      hobbyItem.title = hobby;
+
+      // Random scattered positions like a paint doodle
+      hobbyItem.style.position = "absolute";
+      hobbyItem.style.left = (30 + (i * 60) % 320) + "px";
+      hobbyItem.style.top = (30 + Math.floor(i / 5) * 60) + "px";
+
+      // On click: show description
+      hobbyItem.addEventListener("click", () => {
+        hobbyDesc.textContent = hobbies[hobby];
+      });
+
+      hobbyBoard.appendChild(hobbyItem);
+      i++;
+    }
+  }
+
+  // Call render once
+  renderHobbies();
+</script>
+
 </body>
 </html>
